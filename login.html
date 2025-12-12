@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول و إنشاء حساب | Eternal Technology</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">Eternal Tech</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="services.html">الخدمات</a></li>
+            </ul>
+        </nav>
+        <a href="index.html" class="cta-button">العودة للرئيسية</a>
+        <div class="menu-toggle">☰</div>
+    </header>
+
+    <main>
+        
+        <section class="auth-container">
+            <div class="auth-box">
+                <div class="toggle-buttons">
+                    <button id="login-toggle" class="auth-toggle-btn active">تسجيل الدخول</button>
+                    <button id="signup-toggle" class="auth-toggle-btn">إنشاء حساب</button>
+                </div>
+
+                <form id="login-form" class="auth-form active">
+                    <h2>أهلاً بعودتك!</h2>
+                    <div class="form-group">
+                        <label for="login-email">البريد الإلكتروني أو رقم الهاتف:</label>
+                        <input type="text" id="login-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">كلمة المرور:</label>
+                        <input type="password" id="login-password" name="password" required>
+                    </div>
+                    <a href="#" class="forgot-password">نسيت كلمة المرور؟</a>
+                    <button type="submit" class="btn primary-btn submit-btn">تسجيل الدخول</button>
+                </form>
+
+                <form id="signup-form" class="auth-form">
+                    <h2>ابدأ رحلتك الآن</h2>
+                    <div class="form-group">
+                        <label for="signup-name">الاسم بالكامل:</label>
+                        <input type="text" id="signup-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-phone">رقم الهاتف:</label>
+                        <input type="tel" id="signup-phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">البريد الإلكتروني:</label>
+                        <input type="email" id="signup-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">كلمة المرور (6 أحرف فأكثر):</label>
+                        <input type="password" id="signup-password" name="password" required>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">أوافق على <a href="#">شروط الخدمة والخصوصية</a></label>
+                    </div>
+                    <button type="submit" class="btn primary-btn submit-btn">إنشاء حساب جديد</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // سكريبت بسيط للتبديل بين نماذج الدخول والاشتراك
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginToggle = document.getElementById('login-toggle');
+            const signupToggle = document.getElementById('signup-toggle');
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+
+            loginToggle.addEventListener('click', () => {
+                loginToggle.classList.add('active');
+                signupToggle.classList.remove('active');
+                loginForm.classList.add('active');
+                signupForm.classList.remove('active');
+            });
+
+            signupToggle.addEventListener('click', () => {
+                signupToggle.classList.add('active');
+                loginToggle.classList.remove('active');
+                signupForm.classList.add('active');
+                loginForm.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

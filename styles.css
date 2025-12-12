@@ -1,0 +1,931 @@
+/* ================================================= */
+/* 0. إعادة تعيين والمتغيرات الأساسية (ROOT & RESET) */
+/* ================================================= */
+
+/* الألوان الأساسية: الأخضر (الطاقة/الاستدامة) والأزرق الداكن (التكنولوجيا/الثقة) */
+:root {
+    --primary-color: #00A651; /* أخضر ساطع */
+    --secondary-color: #004A77; /* أزرق داكن */
+    --accent-color: #FFC300; /* أصفر/ذهبي للتمييز */
+    --background-light: #F4F8FB;
+    --text-dark: #333;
+    --text-light: #fff;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+}
+
+/* إعادة تعيين بسيطة لجميع العناصر */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* تم تفعيل خط Cairo ليكون أكثر احترافية ووضوحاً */
+    font-family: 'Cairo', sans-serif; 
+    color: var(--text-dark);
+    background-color: var(--background-light);
+    line-height: 1.6;
+    direction: rtl; /* اتجاه الموقع من اليمين لليسار */
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+/* ================================================= */
+/* 1. شريط التنقل (HEADER & NAVIGATION) */
+/* ================================================= */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: var(--text-light);
+    box-shadow: 0 2px 10px var(--shadow-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    color: var(--text-dark);
+    font-weight: 500;
+    padding: 5px 0;
+    border-bottom: 2px solid transparent;
+}
+
+.navbar ul li a.active,
+.navbar ul li a:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.cta-button {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+    padding: 8px 18px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.menu-toggle {
+    display: none; 
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* الأزرار العامة (Buttons) */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background-color 0.3s, transform 0.3s;
+    text-align: center;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: 2px solid var(--primary-color);
+}
+
+.primary-btn:hover {
+    background-color: #007F3F; 
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    margin-right: 15px;
+}
+
+.secondary-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+/* ================================================= */
+/* 2. تنسيق الصفحة الرئيسية (INDEX.HTML) */
+/* ================================================= */
+
+/* القسم البطولي (Hero Section) */
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 5%;
+    background: linear-gradient(135deg, var(--background-light) 0%, #DDE8F0 100%);
+}
+
+.hero-content {
+    flex-basis: 55%;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.hero-image {
+    flex-basis: 40%;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* تنسيق قسم الفيديو (مضاف حديثاً) */
+.video-section h2 {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* نسبة العرض إلى الارتفاع 16:9 */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    margin-top: 20px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+/* قسم القيمة المضافة */
+.value-proposition {
+    padding: 60px 5%;
+    text-align: center;
+}
+
+.value-proposition h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: var(--secondary-color);
+}
+
+.cards-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.card {
+    background: var(--text-light);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px var(--shadow-light);
+    flex-basis: 30%;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* قسم الدعوة للاستثمار (CTA) */
+.cta-invest {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    padding: 60px 5%;
+    text-align: center;
+    margin: 40px 0;
+}
+
+.cta-invest h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+/* ================================================= */
+/* 3. تنسيق صفحة المستثمرون (INVESTORS.HTML) */
+/* ================================================= */
+
+/* عنوان الصفحة (Page Header) - يُستخدم أيضاً في الصفحات الأخرى */
+.page-header {
+    padding: 60px 5%;
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+/* قسم نظام الاستثمار (Model Steps) */
+.investment-model {
+    padding: 60px 5%;
+    text-align: center;
+}
+
+.investment-model h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: var(--primary-color);
+}
+
+.model-steps {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+}
+
+.step {
+    flex-basis: 30%;
+    background-color: var(--text-light);
+    border-radius: 10px;
+    padding: 30px 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s;
+}
+
+.step:hover {
+    transform: translateY(-5px);
+}
+
+.step h3 {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+/* جدول مصادر الأرباح */
+.profit-sources {
+    padding: 60px 5%;
+    background-color: var(--background-light);
+}
+
+.profit-sources h2 {
+    text-align: center;
+    color: var(--secondary-color);
+    margin-bottom: 30px;
+}
+
+.profit-sources table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    background: var(--text-light);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.profit-sources th, .profit-sources td {
+    padding: 15px;
+    text-align: right;
+    border-bottom: 1px solid #eee;
+}
+
+.profit-sources th {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    font-weight: bold;
+}
+
+.profit-sources tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* قسم نموذج الاستثمار - يستخدم أيضاً في تواصل معنا */
+.investment-form-section {
+    padding: 60px 5%;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.investment-form-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
+.investment-form {
+    background: var(--text-light);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    text-align: right;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.form-note {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* ================================================= */
+/* 4. تنسيق صفحة عن المؤسس (ABOUT.HTML) */
+/* ================================================= */
+
+.founder-bio {
+    padding: 60px 5%;
+}
+
+.bio-content {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.founder-image {
+    flex-basis: 300px;
+    min-width: 250px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.founder-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.founder-image .role {
+    margin-top: 10px;
+    font-style: italic;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.bio-text {
+    flex-grow: 1;
+}
+
+.bio-text h2 {
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    font-size: 2rem;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 5px;
+}
+
+.founder-quote {
+    background-color: var(--background-light);
+    border-right: 5px solid var(--primary-color);
+    padding: 15px 20px;
+    margin: 20px 0;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+}
+
+/* قسم الأهداف المستقبلية */
+.future-goals {
+    padding: 60px 5%;
+    background-color: var(--background-light);
+    text-align: center;
+}
+
+.future-goals h2 {
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+}
+
+.goals-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+}
+
+.goal-item {
+    background-color: var(--text-light);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    flex-basis: 30%;
+    text-align: right;
+}
+
+.goal-item h3 {
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.goal-item ul {
+    list-style: none;
+    padding-right: 0;
+}
+
+.goal-item ul li {
+    position: relative;
+    padding-right: 20px;
+    margin-bottom: 10px;
+}
+
+.goal-item ul li::before {
+    content: '★'; 
+    color: var(--primary-color);
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+/* ================================================= */
+/* 5. تنسيق صفحة الخدمات (SERVICES.HTML) */
+/* ================================================= */
+
+/* قسم آلية العمل (How It Works) */
+.how-it-works {
+    padding: 60px 5%;
+    text-align: center;
+}
+
+.how-it-works h2 {
+    color: var(--secondary-color);
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+}
+
+/* هذا الجزء هو المفتاح لحل مشكلة التنسيق في الخطوات الأربع */
+.steps-flow {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.step-card {
+    background-color: var(--text-light);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 25px;
+    flex-basis: 22%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.step-number {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.flow-arrow {
+    font-size: 2rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.user-account-info {
+    max-width: 700px;
+    margin: 40px auto;
+    background-color: var(--background-light);
+    border-radius: 10px;
+    padding: 30px;
+    border-right: 5px solid var(--primary-color);
+}
+
+/* قسم الطاقة المتجددة والمستقبل */
+.renewable-future {
+    padding: 60px 5%;
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+}
+
+.future-container {
+    display: flex;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.future-item {
+    flex-basis: 50%;
+}
+
+.future-item ul li {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-right: 3px solid var(--primary-color);
+}
+
+/* قسم الخريطة والمواقع */
+.location-map-section {
+    padding: 60px 5%;
+    text-align: center;
+}
+
+.location-map-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+}
+
+.map-placeholder {
+    margin: 30px auto;
+    max-width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ================================================= */
+/* 6. تنسيق صفحة التواصل (CONTACT.HTML) */
+/* ================================================= */
+
+.contact-info-form {
+    padding: 60px 5%;
+    display: flex;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+.info-details {
+    flex-basis: 40%;
+    background-color: var(--background-light);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.contact-form-container {
+    flex-basis: 60%;
+}
+
+.social-links img {
+    width: 35px;
+    height: 35px;
+    transition: transform 0.3s;
+}
+
+/* ================================================= */
+/* 7. تنسيق صفحة التسجيل والدخول (LOGIN.HTML) */
+/* ================================================= */
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; 
+    padding: 40px 5%;
+    background-color: var(--background-light);
+}
+
+.auth-box {
+    width: 100%;
+    max-width: 450px;
+    background: var(--text-light);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: right;
+}
+
+.toggle-buttons {
+    display: flex;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #eee;
+}
+
+.auth-toggle-btn {
+    flex-grow: 1;
+    padding: 12px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--text-dark);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.auth-toggle-btn.active {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.auth-form {
+    display: none;
+    padding-top: 20px;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+.forgot-password {
+    display: block;
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    direction: ltr; 
+    margin-bottom: 25px;
+}
+
+/* ================================================= */
+/* 8. التذييل (FOOTER) */
+/* ================================================= */
+
+footer {
+    background-color: var(--text-dark);
+    color: #ccc;
+    padding: 40px 5% 20px;
+    font-size: 0.9rem;
+}
+
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+}
+
+.footer-col {
+    flex-basis: 25%;
+}
+
+.footer-col h4 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 8px;
+}
+
+.footer-col a {
+    color: #ccc;
+}
+
+.copyright {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+
+/* ================================================= */
+/* 9. التصميم المتجاوب (RESPONSIVE MEDIA QUERIES) */
+/* ================================================= */
+
+@media (max-width: 992px) {
+    /* عام */
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content, .hero-image {
+        flex-basis: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-image {
+        margin-top: 40px;
+    }
+    
+    /* المستثمرون */
+    .model-steps {
+        flex-direction: column;
+    }
+
+    .step {
+        flex-basis: 100%;
+    }
+    
+    /* عن المؤسس */
+    .bio-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .founder-image {
+        margin-bottom: 30px;
+    }
+
+    .goals-grid {
+        flex-direction: column;
+    }
+
+    .goal-item {
+        flex-basis: 100%;
+        margin-bottom: 20px;
+    }
+    
+    /* الخدمات */
+    .steps-flow {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .flow-arrow {
+        display: none; 
+    }
+    .step-card {
+        flex-basis: 45%;
+        margin-bottom: 20px;
+    }
+
+    .future-container {
+        flex-direction: column;
+    }
+    .future-item {
+        flex-basis: 100%;
+    }
+    
+    /* التواصل */
+    .contact-info-form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-details, .contact-form-container {
+        flex-basis: 100%;
+        width: 100%;
+    }
+    
+    .contact-form-container {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* شريط التنقل للموبايل */
+    .navbar nav {
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        background-color: var(--text-light);
+        box-shadow: 0 5px 10px var(--shadow-light);
+        padding: 10px 0;
+    }
+
+    .navbar nav.open {
+        display: flex; 
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .navbar ul li {
+        margin: 10px 0;
+        text-align: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .menu-toggle {
+        display: block; 
+    }
+
+    .cta-button {
+        display: none; 
+    }
+
+    /* قسم القيمة المضافة */
+    .cards-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .card {
+        flex-basis: 100%;
+    }
+    
+    /* الجداول */
+    .profit-sources table {
+        display: block;
+        overflow-x: auto; 
+        white-space: nowrap;
+    }
+
+    /* التذييل */
+    .footer-grid {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-col {
+        flex-basis: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .step-card {
+        flex-basis: 100%;
+    }
+}
